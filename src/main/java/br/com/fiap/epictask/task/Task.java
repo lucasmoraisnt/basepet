@@ -17,10 +17,10 @@ public class Task {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
-    @NotBlank
+    @NotBlank(message = "campo titulo obrigatório")
     String title;
 
-    @Size(min=10)
+    @Size(min=10, message= "descrição deve ter no minimo 10 caracteres")
     String descricao;
 
     @Min(1) @Max(100)

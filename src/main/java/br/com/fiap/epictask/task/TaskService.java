@@ -23,4 +23,8 @@ public class TaskService {
         return true;
     }
 
+    public void save(Task task) {
+        repository.save(task);
+    }
+
 }
