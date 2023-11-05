@@ -27,5 +27,6 @@ public class UserController {
         model.addAttribute("users", repository.findAll());
         return "auth/user";
     }
+    
 
 }

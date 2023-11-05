@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{ _template :: head('pets') }" ></head>
+
+<body>
+
+    <nav th:replace="~{ _template :: #navbar }"></nav>
+
+    <div class="container">
+
+        <div class="card-panel teal accent-3" th:if="${success}" th:text="${success}"></div>
+        <div class="card-panel red accent-3 white-text" th:if="${error}" th:text="${error}"></div>
+
+        <h2>BasePet</h2>
+
+        <div class="row">
+
+            <div th:each="pet : ${pets}" class="col s12 m6 l4">
+
+                <div class="card">
+                    <div class="card-content">
+                        <img th:if="${pet.user != null}" th:src="${pet.user.avatarUrl}" alt="" class="avatar">
+
+                        <p th:text="${pet.nome}" class="card-title"></p>
+                        <p th:text="${pet.idade}"></p>
+                        <p th:text="${pet.porte}"></p>
+                        <p th:text="${pet.caracteristica}"></p>
+                    </div>
+
+                    <div class="card-action">
+                        <a th:href="${'/pet/delete/' + pet.id}" class="waves-effect waves-light btn-small red">
+                            <i class="material-icons">delete</i>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="fixed-action-btn">
+        <a href="/new" class="btn-floating btn-large red">
+            <i class="large material-icons">add</i>
+        </a>
+    </div>
+
+</body>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var elems = document.querySelectorAll('.dropdown-trigger');
+        const options = {
+            constrainWidth: false,
+            coverTrigger: false
+        }
+        var instances = M.Dropdown.init(elems, options);
+    });
+</script>
+
+</html>

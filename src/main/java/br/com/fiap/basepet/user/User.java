@@ -19,15 +19,14 @@ public class User {
     @Id
     Long id;
     String name;
-    int telefone;
-    String endereco;
+    String avatarUrl;
+    int score;
 
     public static User convert(OAuth2User oAuth2User){
         return User.builder()
                     .id(Long.valueOf(oAuth2User.getName()))
                     .name(oAuth2User.getAttribute("name"))
-                    .telefone(oAuth2User.getAttribute("telefone"))
-                    .endereco(oAuth2User.getAttribute("endereco"))
+                    .avatarUrl(oAuth2User.getAttribute("avatar_url"))
                     .build()
                     ;
     }

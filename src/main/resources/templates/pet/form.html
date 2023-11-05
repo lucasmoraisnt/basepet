@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{ _template :: head('cadastrar') }" ></head>
+
+<body>
+
+    <nav th:replace="~{ _template :: #navbar }"></nav>
+
+    <div class="container">
+
+        <h3>Cadastrar Pet</h3>
+
+        <div class="row">
+            <form th:action="${'/pet'}" method="post" class="col s12" th:object="${pet}">
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input 
+                            th:field="*{title}" 
+                            type="text"
+                            th:classappend="${#fields.hasErrors('title')} ? invalid"
+                        >
+                        <label for="title">Nome</label>
+                        <span class="helper-text red-text" th:errors="*{title}"></span>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input 
+                            th:field="*{idade}" 
+                            type="text"
+                            th:classappend="${#fields.hasErrors('idade')} ? invalid"
+                        >
+                        <label for="idade">Idade</label>
+                        <span class="helper-text red-text" th:errors="*{idade}"></span>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input 
+                            th:field="*{porte}" 
+                            type="text"
+                            th:classappend="${#fields.hasErrors('porte')} ? invalid"
+                        >
+                        <label for="porte">Porte</label>
+                        <span class="helper-text red-text" th:errors="*{porte}"></span>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s12">
+                        <textarea 
+                            th:field="*{descricao}" 
+                            class="materialize-textarea"
+                            th:classappend="${#fields.hasErrors('descricao')} ? invalid"
+                        ></textarea>
+                        <label for="descricao">Descrição</label>
+                        <span class="helper-text red-text" th:errors="*{descricao}"></span>
+                    </div>  
+                </div>
+                <div>
+                    <a href="/pet" class="btn grey">cancelar</a>
+                    <button class="btn">salvar</button>
+                </div>
+            </form>
+        </div>
+
+
+    </div>
+
+
+
+
+</body>
+
+</html>
